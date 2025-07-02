@@ -1,6 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import "./App.css";
 
+import nois1 from "./assets/nois1.jpeg";
+import nois2 from "./assets/nois2.jpeg";
+import nois3 from "./assets/nois3.jpeg";
+import nois4 from "./assets/nois4.jpeg";
+import nois5 from "./assets/nois5.jpeg";
+import nois6 from "./assets/nois6.jpeg";
+import nois7 from "./assets/nois7.jpeg";
+
 function App() {
   const noBtnRef = useRef(null);
   const [hearts, setHearts] = useState([]);
@@ -59,15 +67,7 @@ function App() {
     return () => window.removeEventListener("resize", resetPosition);
   }, []);
 
-  const imageSources = [
-    "/nois1.jpeg",
-    "/nois2.jpeg",
-    "/nois3.jpeg",
-    "/nois4.jpeg",
-    "/nois5.jpeg",
-    "/nois6.jpeg",
-    "/nois7.jpeg",
-  ];
+  const imageSources = [nois1, nois2, nois3, nois4, nois5, nois6, nois7];
 
   return (
     <div className="container">
