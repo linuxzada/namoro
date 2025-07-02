@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  font-family: 'Pacifico', cursive;
+  overflow: hidden;
+}
+
+.container {
+  background-color: #094115;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 50px;
+  text-shadow: 0 0 10px #1e824c;
+  z-index: 10;
+  position: relative;
+}
+
+.button-group {
+  display: flex;
+  gap: 40px;
+  z-index: 10;
+}
+
+.btn {
+  padding: 16px 36px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  user-select: none;
+  background-color: #000000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.btn:hover {
+  background-color: #222222;
+  transform: scale(1.05);
+}
+/* Corações caindo */
+
+.hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  top: -30px;
+  width: 25px;
+  height: 25px;
+  background-color: #b10020;
+  transform: rotate(-45deg);
+  animation: floatDown 6s linear forwards;
+  border-radius: 50% 50% 0 0;
+  opacity: 1;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #b10020;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: 0;
+  left: 12.5px;
+}
+
+.heart::after {
+  top: -12.5px;
+  left: 0;
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(150px) rotate(-40deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(300px) rotate(-50deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(450px) rotate(-45deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(600px) rotate(-40deg);
+    opacity: 0;
+  }
+}
+.container {
+  background-color: #094115;
+  position: relative;
+  overflow: visible;
+  /* resto igual */
+}
+
+.photos {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 0; /* atrás do texto e botões */
+}
+
+.photos img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%; /* deixa redondo */
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  opacity: 0.7;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.photos img:hover {
+  opacity: 1;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+.photos {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 90%;
+  z-index: 0;
+}
+
+.photos img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.75;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.photos img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+.zoomed {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.3);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
