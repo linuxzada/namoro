@@ -60,13 +60,13 @@ function App() {
   }, []);
 
   const imageSources = [
-    "/nois 1.jpeg",
-    "/nois 2.jpeg",
-    "/nois 3.jpeg",
-    "/nois 4.jpeg",
-    "/nois 5.jpeg",
-    "/nois 6.jpeg",
-    "/nois 7.jpeg",
+    "/nois1.jpeg",
+    "/nois2.jpeg",
+    "/nois3.jpeg",
+    "/nois4.jpeg",
+    "/nois5.jpeg",
+    "/nois6.jpeg",
+    "/nois7.jpeg",
   ];
 
   return (
