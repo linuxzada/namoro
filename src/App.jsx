@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import "./App.css";
 
+// Importando as imagens do diretório /src/assets
 import nois1 from "./assets/nois1.jpeg";
 import nois2 from "./assets/nois2.jpeg";
 import nois3 from "./assets/nois3.jpeg";
@@ -8,6 +9,11 @@ import nois4 from "./assets/nois4.jpeg";
 import nois5 from "./assets/nois5.jpeg";
 import nois6 from "./assets/nois6.jpeg";
 import nois7 from "./assets/nois7.jpeg";
+import nois8 from "./assets/nois8.jpeg";
+import nois9 from "./assets/nois9.jpeg";
+import nois10 from "./assets/nois10.jpeg";
+import nois11 from "./assets/nois11.jpeg";
+import nois12 from "./assets/nois12.jpeg";
 
 function App() {
   const noBtnRef = useRef(null);
@@ -67,7 +73,7 @@ function App() {
     return () => window.removeEventListener("resize", resetPosition);
   }, []);
 
-  const imageSources = [nois1, nois2, nois3, nois4, nois5, nois6, nois7];
+  const imageSources = [nois1, nois2, nois3, nois4, nois5, nois6, nois7, nois8, nois9, nois10, nois11, nois12];
 
   return (
     <div className="container">
@@ -88,11 +94,7 @@ function App() {
         <button className="btn yes" onClick={handleSimClick}>
           Sim 💚
         </button>
-        <button
-          className="btn no"
-          ref={noBtnRef}
-          onMouseEnter={moveButton}
-        >
+        <button className="btn no" ref={noBtnRef} onMouseEnter={moveButton}>
           Não 💔
         </button>
       </div>
