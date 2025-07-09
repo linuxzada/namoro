@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import "./App.css";
-
-// Importando as imagens do diretório /src/assets
 import nois1 from "./assets/nois1.jpeg";
 import nois2 from "./assets/nois2.jpeg";
 import nois3 from "./assets/nois3.jpeg";
@@ -20,6 +18,10 @@ function App() {
   const [hearts, setHearts] = useState([]);
   const [showHearts, setShowHearts] = useState(false);
   const [zoomedImage, setZoomedImage] = useState(null);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [started, setStarted] = useState(false);
+  const [loadingComplete, setLoadingComplete] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const moveButton = () => {
     const button = noBtnRef.current;
@@ -73,7 +75,50 @@ function App() {
     return () => window.removeEventListener("resize", resetPosition);
   }, []);
 
-  const imageSources = [nois1, nois2, nois3, nois4, nois5, nois6, nois7, nois8, nois9, nois10, nois11, nois12];
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+        setLoadingProgress((prev) => {
+          const next = Math.min(prev + 10, 100);
+          if (next === 100 && !loadingComplete) {
+            setLoadingComplete(true);
+            setFadeOut(true);
+            setTimeout(() => {
+              setStarted(true);
+            }, 2000);
+          }
+          return next;
+        });
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [loadingComplete]);
+
+  const imageSources = [
+    nois1, nois2, nois3, nois4, nois5, nois6,
+    nois7, nois8, nois9, nois10, nois11, nois12,
+  ];
+
+  if (!started) {
+    return (
+      <div className={`loading-screen ${fadeOut ? "fade-out" : ""}`}>
+        <div className="particles-bg"></div>
+        <h1>Pressione <span className="key">Espaço</span> para carregar</h1>
+        <div className="progress-bar">
+          <div className="progress-fill" style={{ width: `${loadingProgress}%` }} />
+        </div>
+        <p>{loadingProgress}%</p>
+
+        {loadingComplete && (
+          <div className="loading-finish">
+            <h2 className="glow">Tudo pronto!</h2>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="container">
